@@ -10,6 +10,7 @@ void main()
 class MyApp extends StatelessWidget
 {
   Mozg mozg;
+  // this is checking git
   MyApp(this.mozg){}
   Widget build(BuildContext cont)
   {
