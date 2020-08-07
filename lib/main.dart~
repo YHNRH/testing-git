@@ -250,8 +250,27 @@ class MyWidget extends StatelessWidget
               [
                 Text(mozg.getTitle(_id)),
                 Text(mozg.getText(_id)),
+                Container
+                (
+                  color: Colors.black12,
+                  width: 50.0,
+                  height: 30.0,
+                  child:
+                  Center(
+                    child:
+                    GestureDetector
+                  (
+                    onTap: ()
+                    {
+                      Navigator.pop(context);
+                    },
+                    child:
+                    Text('Назад')
+                  )
+                )
+                )
               ]
-            
+              
           )
         )       
     );
