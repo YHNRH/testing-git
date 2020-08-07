@@ -17,17 +17,17 @@ class MyApp extends StatelessWidget
     return MaterialApp
     (
       /*body:
-        Container
-        (
-          child:
-          BodyWid()
-        ) */
-          initialRoute: '/',
-          routes:
-          {
-            '/': (BuildContext c) => BodyWid(mozg),
+      Container
+      (
+      child:
+      BodyWid()
+    ) */
+      initialRoute: '/',
+      routes:
+      {
+        '/': (BuildContext c) => BodyWid(mozg),
         //    '/sec': (BuildContext c) => SecondScreen(),
-          }
+      }
       
     ); 
   }
@@ -49,19 +49,19 @@ class BodyWidState extends State
   {
     
     return Scaffold
+    (
+      appBar: AppBar
       (
-        appBar: AppBar
-        (
-          title: const Text('Новости')
-        ),
-        body:
-        ListView.builder(itemBuilder: (cont, i)
-          {
-        
-            if(i<10) return ListTile(title: MyWidget(mozg, i, mozg.getTitle(i),mozg.getText(i), img: mozg.getImg(i)));
-      }
-    )
-  );
+        title: const Text('Новости')
+      ),
+      body:
+      ListView.builder(itemBuilder: (cont, i)
+        {
+          
+          if(i<10) return ListTile(title: MyWidget(mozg, i, mozg.getTitle(i),mozg.getText(i), img: mozg.getImg(i)));
+        }
+      )
+    );
   }
 }
 
@@ -91,50 +91,50 @@ class MyWidget extends StatelessWidget
       child:
       Container
       (
-      height: 100,
-      color: Colors.black12,
-      child:
-      Row
-      (
-        children:
-        [
-          Image.network(_img, width: 100.0, height: 100.0, //fit: BoxFit.cover
-          ),
-          
-          Expanded
-          (
-            child:
+        height: 100,
+        color: Colors.black12,
+        child:
+        Row
+        (
+          children:
+          [
+            Image.network(_img, width: 100.0, height: 100.0, //fit: BoxFit.cover
+            ),
+            
+            Expanded
+            (
+              child:
+              Container
+              (
+                padding: EdgeInsets.all(5.0),
+                child:
+                Column(
+                  children:
+                  [
+                    Text(_title, style: new TextStyle(fontSize: 20.0),
+                      //  overflow: TextOverflow.ellipsis,
+                      softWrap: true),
+                    Expanded
+                    (
+                      child:
+                      Text(_text, softWrap: true, textAlign: TextAlign.justify, style: TextStyle(fontSize: 13.0)),
+                    )
+                  ]
+                )
+              )
+            ),
             Container
             (
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.only(top: 5.0, left: 2.0, right: 2.0),
+              //              padding: EdgeInsets.symmetric(horisontal: 10),
+              width: 90.0,
               child:
-              Column(
-                children:
-                [
-                  Text(_title, style: new TextStyle(fontSize: 20.0),
-                    //  overflow: TextOverflow.ellipsis,
-                    softWrap: true),
-                  Expanded
-                  (
-                    child:
-                    Text(_text, softWrap: true, textAlign: TextAlign.justify, style: TextStyle(fontSize: 13.0)),
-                  )
-                ]
-              )
+              NewsBoxFavourit(10000, false),
             )
-          ),
-          Container
-          (
-            padding: EdgeInsets.only(top: 5.0, left: 2.0, right: 2.0),
-            //              padding: EdgeInsets.symmetric(horisontal: 10),
-            width: 90.0,
-            child:
-            NewsBoxFavourit(10000, false),
-          )
-        ]
+          ]
+        )
       )
-    )
-  );
+    );
     
     else
 
@@ -147,69 +147,69 @@ class MyWidget extends StatelessWidget
       },
       child:
       Container
-    (
-      height: 100,
-      color: Colors.black12,
-      child:
-      Row
       (
-        children:
-        [
-          Expanded
-          (
-            child:
+        height: 100,
+        color: Colors.black12,
+        child:
+        Row
+        (
+          children:
+          [
+            Expanded
+            (
+              child:
+              Container
+              (
+                padding: EdgeInsets.all(5.0),
+                child:
+                Column(
+                  children:
+                  [
+                    Text(_title, style: new TextStyle(fontSize: 20.0),
+                      //  overflow: TextOverflow.ellipsis,
+                      softWrap: true),
+                    Expanded
+                    (
+                      child:
+                      Text(_text, softWrap: true, textAlign: TextAlign.justify, style: TextStyle(fontSize: 13.0)),
+                    )
+                  ]
+                )
+              )
+            ),
             Container
             (
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.only(top: 5.0, left: 2.0, right: 2.0),
+              //              padding: EdgeInsets.symmetric(horisontal: 10),
+              width: 90.0,
               child:
-              Column(
-                children:
-                [
-                  Text(_title, style: new TextStyle(fontSize: 20.0),
-                    //  overflow: TextOverflow.ellipsis,
-                    softWrap: true),
-                  Expanded
-                  (
-                    child:
-                    Text(_text, softWrap: true, textAlign: TextAlign.justify, style: TextStyle(fontSize: 13.0)),
-                  )
-                ]
-              )
+              NewsBoxFavourit(10000, false),
             )
-          ),
-          Container
-          (
-            padding: EdgeInsets.only(top: 5.0, left: 2.0, right: 2.0),
-            //              padding: EdgeInsets.symmetric(horisontal: 10),
-            width: 90.0,
-            child:
-            NewsBoxFavourit(10000, false),
-          )
-        ]
+          ]
+        )
       )
-    )
-  );
+    );
   }
 }
 
-    class NewsBoxFavourit extends StatefulWidget {
-      final int _num;
-      final bool _like;
+class NewsBoxFavourit extends StatefulWidget {
+  final int _num;
+  final bool _like;
 
-      NewsBoxFavourit(this._num, this._like);
+  NewsBoxFavourit(this._num, this._like);
 
-      @override
-      createState() => new NewsBoxFavouritState(_num, _like);
-    }
+  @override
+  createState() => new NewsBoxFavouritState(_num, _like);
+}
 
-    class NewsBoxFavouritState extends State<NewsBoxFavourit> {
-      int num;
-      bool like;
+class NewsBoxFavouritState extends State<NewsBoxFavourit> {
+  int num;
+  bool like;
 
-      NewsBoxFavouritState(this.num, this.like);
+  NewsBoxFavouritState(this.num, this.like);
 
-      void pressButton() {
-        setState(() {
+  void pressButton() {
+    setState(() {
             like = !like;
 
             if(like) num++;
@@ -241,25 +241,63 @@ class MyWidget extends StatelessWidget
       SecondScreen (this._id, this.mozg){}
       @override
       Widget build(BuildContext context) {
+        if(mozg.getImg(_id)!=null && mozg.getImg(_id)!="")
         return Scaffold(
           appBar: AppBar(title: Text('Второе окно')),
-          body: Container(
-            child:
-            Column
+      body: 
+      SingleChildScrollView(
+        child:
+        Container(
+        child:
+        Column
+        (
+          children:
+          [
+            Container
             (
-              children:
-              [
-                Text(mozg.getTitle(_id)),
-                Text(mozg.getText(_id)),
-                Container
-                (
-                  color: Colors.black12,
-                  width: 50.0,
-                  height: 30.0,
+              color: Color(0x30B74093),
+                padding: EdgeInsets.all(5.0),
+              child:
+            Align
+            (
+              alignment: Alignment(-1.0,-1.0),
+              child:
+            Text(mozg.getTitle(_id),  textAlign: TextAlign.left,  softWrap: true,
+              style: new TextStyle(fontSize: 30.0))
+          )
+        ),
+        Container
+        (
+          height: 497.0,
+          child:
+        SingleChildScrollView(
+        //  scrollDirection: Axis.vertical,
+          child:
+          Text(mozg.getText(_id),//  softWrap: true,
+          )
+          )
+          )
+      ,
+        Image.network(mozg.getImg(_id), width: 300.0, height: 300.0, fit: BoxFit.cover
+            ),
+            Container
+            (
+                   
+              padding: EdgeInsets.only(right: 20.0, bottom: 10.0, top: 30.0),
+              child:
+            Align
+            (
+              alignment: Alignment(1.0,-1.0),
+              child:
+              Container
+              (
+                color: Colors.black12,
+                width: 50.0,
+                height: 30.0,
+                child:
+                Center(
                   child:
-                  Center(
-                    child:
-                    GestureDetector
+                  GestureDetector
                   (
                     onTap: ()
                     {
@@ -269,11 +307,84 @@ class MyWidget extends StatelessWidget
                     Text('Назад')
                   )
                 )
-                )
-              ]
-              
+              )
+            )
           )
-        )       
+          ]
+          
+        )
+      )       
+  ));
+    else
+    return Scaffold(
+          appBar: AppBar(title: Text('Второе окно')),
+      body: Container(
+        child:
+        Column
+        (
+          children:
+          [
+            Container
+            (
+              color: Color(0x30B74093),
+                padding: EdgeInsets.all(5.0),
+              child:
+            Align
+            (
+              alignment: Alignment(-1.0,-1.0),
+              child:
+            Text(mozg.getTitle(_id),  textAlign: TextAlign.left,  softWrap: true,
+              style: new TextStyle(fontSize: 30.0))
+          )
+        ),
+        Container
+        (
+          height: 497.0,
+          child:
+        SingleChildScrollView(
+        //  scrollDirection: Axis.vertical,
+          child:
+          Text(mozg.getText(_id),//  softWrap: true,
+          )
+          )
+          )
+      ,
+       
+            Container(height:50.0),
+            Container
+            (
+                   
+              padding: EdgeInsets.only(right: 20.0),
+              child:
+            Align
+            (
+              alignment: Alignment(1.0,-1.0),
+              child:
+              Container
+              (
+                color: Colors.black12,
+                width: 50.0,
+                height: 30.0,
+                child:
+                Center(
+                  child:
+                  GestureDetector
+                  (
+                    onTap: ()
+                    {
+                      Navigator.pop(context);
+                    },
+                    child:
+                    Text('Назад')
+                  )
+                )
+              )
+            )
+          )
+          ]
+          
+        )
+      )       
     );
   }
 }
@@ -295,7 +406,7 @@ class Mozg
     for (int a = 0; a < 100; a++)
     {
       str = '';
-      for (int b = 0; b<1000; b++)
+      for (int b = 0; b<10000; b++)
       str+= random.nextInt(9).toString()+' ';
       arrayText.add('Текст $str');
     }
@@ -314,23 +425,23 @@ class Mozg
         'https://st.weblancer.net/download/3389115_935xp.png',
         null,
         ''
-     //   'https://lastfm.freetls.fastly.net/i/u/ar0/1ff332ea14f546f4c6578abb62bbd47a.jpg'
+        //   'https://lastfm.freetls.fastly.net/i/u/ar0/1ff332ea14f546f4c6578abb62bbd47a.jpg'
     ]);
   }
   
-    String getTitle(int a)
-    {
-      return arrayTitle[a];
-    }
-
-     String getText(int a)
-    {
-      return arrayText[a];
-    }
- 
-     String getImg(int a)
-    {
-      return arrayImg[a];
-    }
-
+  String getTitle(int a)
+  {
+    return arrayTitle[a];
   }
+
+  String getText(int a)
+  {
+    return arrayText[a];
+  }
+  
+  String getImg(int a)
+  {
+    return arrayImg[a];
+  }
+
+}
