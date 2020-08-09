@@ -1,0 +1,42 @@
+part of 'main.dart';
+
+class BodyWid extends StatefulWidget
+{
+  Mozg mozg;
+  BodyWid(this.mozg){}
+  createState() => BodyWidState(mozg);
+}
+
+class BodyWidState extends State
+{
+  Mozg mozg;
+  BodyWidState(this.mozg){}
+  Widget build(BuildContext cont)
+  {
+    
+    return Scaffold
+    (
+      appBar: AppBar
+      (
+        title: const Text('Новости'),
+        actions:
+        [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed:()
+            {
+              print("Da");
+            }
+          )
+        ]
+      ),
+      body:
+      ListView.builder(itemBuilder: (cont, i)
+        {
+          
+          if(i<10) return ListTile(title: MyWidget(mozg, i, mozg.getTitle(i),mozg.getText(i), img: mozg.getImg(i)));
+        }
+      )
+    );
+  }
+}
