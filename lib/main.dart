@@ -52,7 +52,17 @@ class BodyWidState extends State
     (
       appBar: AppBar
       (
-        title: const Text('Новости')
+        title: const Text('Новости'),
+        actions:
+        [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed:()
+            {
+              print("Da");
+            }
+          )
+        ]
       ),
       body:
       ListView.builder(itemBuilder: (cont, i)
@@ -91,15 +101,17 @@ class MyWidget extends StatelessWidget
       child:
       Container
       (
-        height: 100,
+        height: 120,
         color: Colors.black12,
         child:
         Row
         (
           children:
           [
-            Image.network(_img, width: 100.0, height: 100.0, //fit: BoxFit.cover
-            ),
+            
+                Image.network(_img, width: 100.0, height: 100.0, //fit: BoxFit.cover
+         
+    ),
             
             Expanded
             (
@@ -125,12 +137,35 @@ class MyWidget extends StatelessWidget
             ),
             Container
             (
+               child:
+            Column
+            (
+              children:
+              [
+                Container
+                (
               padding: EdgeInsets.only(top: 5.0, left: 2.0, right: 2.0),
               //              padding: EdgeInsets.symmetric(horisontal: 10),
               width: 90.0,
               child:
               NewsBoxFavourit(10000, false),
-            )
+            ),
+            Container
+            (
+              width: 90.0,
+              height: 43.0,
+              padding: EdgeInsets.only(right: 4.0),
+              child:
+            Align
+             (
+              
+                  alignment: Alignment.bottomRight, //НЕ РАБОТАЕТ!!!!!!!!!!
+                  child:
+                   
+                  Text(mozg.getTop(_id), style: TextStyle(color: Colors.grey)
+              )))
+                ]
+            ))
           ]
         )
       )
@@ -148,7 +183,7 @@ class MyWidget extends StatelessWidget
       child:
       Container
       (
-        height: 100,
+        height: 120,
         color: Colors.black12,
         child:
         Row
@@ -177,6 +212,10 @@ class MyWidget extends StatelessWidget
                 )
               )
             ),
+            Column
+            (
+              children:
+              [
             Container
             (
               padding: EdgeInsets.only(top: 5.0, left: 2.0, right: 2.0),
@@ -184,7 +223,23 @@ class MyWidget extends StatelessWidget
               width: 90.0,
               child:
               NewsBoxFavourit(10000, false),
-            )
+            ),
+            Container
+            (
+              width: 90.0,
+              height: 43.0,
+              padding: EdgeInsets.only(right: 4.0),
+              child:
+            Align
+             (
+              
+                  alignment: Alignment.bottomRight, //НЕ РАБОТАЕТ!!!!!!!!!!
+                  child:
+                   
+                  Text(mozg.getTop(_id), style: TextStyle(color: Colors.grey)
+              )))
+            ]
+          )
           ]
         )
       )
@@ -395,6 +450,7 @@ class Mozg
   List<String> arrayTitle = [];
   List<String> arrayText = [];
   List<String> arrayImg = [];
+  List<String> arrayTop = [];
   String  str;
   Mozg ()
   {
@@ -427,8 +483,27 @@ class Mozg
         ''
         //   'https://lastfm.freetls.fastly.net/i/u/ar0/1ff332ea14f546f4c6578abb62bbd47a.jpg'
     ]);
+     for (int a = 0; a < 100; a++)
+  {
+    int r = random.nextInt(3);
+    print(r);
+    switch (r)
+    {
+      case 0:
+      arrayTop.add('Наука');
+      break;
+      case 1:
+      arrayTop.add('Политика');
+      break;
+      case 2:
+      arrayTop.add('Спорт');
+      break;
+    }
   }
-  
+ 
+  }
+
+    
   String getTitle(int a)
   {
     return arrayTitle[a];
@@ -442,6 +517,11 @@ class Mozg
   String getImg(int a)
   {
     return arrayImg[a];
+  }
+
+  String getTop(int a)
+  {
+    return arrayTop[a];
   }
 
 }
